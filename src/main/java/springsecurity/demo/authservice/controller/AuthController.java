@@ -68,12 +68,6 @@ public class AuthController {
         return new ResponseEntity<>(new ServiceResponse("data fetched successfully", data), HttpStatus.OK);
     }
 
-    @PostMapping("/signup2")
-    public ResponseEntity<ServiceResponse> register() {
-        log.info("request reached");
-        return new ResponseEntity<>(new ServiceResponse("Error: Username is already taken!", null), HttpStatus.OK);
-    }
-
     @PostMapping("/signup")
     public ResponseEntity<ServiceResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
